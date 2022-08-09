@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "314c4f9f-4926-49b1-9d7e-30a268fdf68d",
+		"name": "TGL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20504542"
+	},
+	"item": [
+		{
+			"name": "GetAllCustomers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('StatusCode is 200', function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test('Customers are 24', function() {\r",
+							"    pm.expect(jsonData.length).to.eql(24);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/customers",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateCustomer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test('StatusCode is 201', function() {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Id\" : 251,\r\n    \"FirstName\" : \"fds\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/customers",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('StatusCode is 200', function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 5,\r\n    \"firstName\": \"Cindy\",\r\n    \"lastName\": \"Jamison\",\r\n    \"email\": \"Cindy.Jamison@gmail.com\",\r\n    \"address\": \"84533 Hardrock St.\",\r\n    \"city\": \"Chandler\",\r\n    \"state\": {\r\n        \"id\": 30,\r\n        \"abbreviation\": \"AZ\",\r\n        \"name\": \"Arizona\"\r\n    },\r\n    \"stateId\": 30,\r\n    \"zip\": 85247,\r\n    \"gender\": \"Female\",\r\n    \"orderCount\": 7,\r\n    \"orders\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/customers/5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"customers",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCustomer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('StatusCode is 200', function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('StatusCode after deletion', function() {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/customers/11",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"customers",
+						"11"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
